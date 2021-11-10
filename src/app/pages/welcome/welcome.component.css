@@ -70,6 +70,10 @@
     margin-top: 2rem;
     text-align: center;
     font-weight: bold;
+    background-color: #fff;
+    padding: .25rem;
+    border-radius: .25rem;
+    font-size: 12px;
 }
 
 .d-float-ball div {
