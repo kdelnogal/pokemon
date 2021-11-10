@@ -1,0 +1,19 @@
+<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div class="col-12 d-avatar-pokemon text-center px-3 pt-3">
+        <img class="avatar-pokemon" src="{{ pokemon.image }}" onerror="this.src='./assets/pokemon_ball_1.png';" alt="{{ pokemon.name }}" srcset="">
+    </div>
+    <div class="col-12 p-4 d-flex flex-column text-center">
+      <strong class="d-inline-block mb-2 text-primary text-uppercase">{{ pokemon.type }}</strong>
+      <h3 class="mb-0">{{ pokemon.name }}</h3>
+    </div>
+
+    <div class="col-12 d-flex flex-column text-center mb-4 px-3">
+        <span class="badge bg-secondary mb-1">Hp: {{ pokemon.hp }}</span>
+        <span class="badge bg-secondary mb-1">Ataque: {{ pokemon.attack }}</span>
+        <span class="badge bg-secondary">Defensa: {{ pokemon.defense }}</span>
+    </div>
+    <div class="btn-group px-3 mb-3">
+        <button type="button" class="btn btn-sm btn-warning" (click)="editPokemon(pokemon)">Editar</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="deletePokemon(pokemon)">Eliminar</button>
+      </div>
+  </div>

@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+<div class="container container-inside">
+
+  <div class="row py-lg-5" *ngIf="pokemon">
+    <div class="col-md-7 col-lg-8 mx-auto">
+        <h4 class="mb-3">Editar Pokémon</h4>
+        <form [formGroup]="pokemonForm" (ngSubmit)="submitForm()">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+              <div class="invalid-feedback d-block" *ngIf="inputIsValid('name')">
+                El nombre es requerido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Imagen</label>
+              <input type="text" class="form-control" id="image" formControlName="image" [value]="pokemon.image">
+              <div class="invalid-feedback d-block" *ngIf="inputIsValid('image')">
+                La imagen requiere una url válida
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="customRange2" class="form-label">Hp: {{ pokemon.hp }}</label>
+                <input type="range" class="form-range" min="0" max="100" step="1" id="hp" formControlName="hp" [(ngModel)]="pokemon.hp">
+                <div class="invalid-feedback d-block" *ngIf="inputIsValid('hp')">
+                    El hp es requerido
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="customRange2" class="form-label">Ataque: {{ pokemon.attack }}</label>
+                <input type="range" class="form-range" min="0" max="100" step="1" id="attack" formControlName="attack" [(ngModel)]="pokemon.attack">
+                <div class="invalid-feedback d-block" *ngIf="inputIsValid('attack')">
+                    El ataque es requerido
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="customRange2" class="form-label">Defensa: {{ pokemon.defense }}</label>
+                <input type="range" class="form-range" min="0" max="100" step="1" id="defense" formControlName="defense" [(ngModel)]="pokemon.defense">
+                <div class="invalid-feedback d-block" *ngIf="inputIsValid('defense')">
+                    La defensa es requerida
+                </div>
+              </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Tipo</label>
+              <select class="form-select" id="type" formControlName="type" [value]="pokemon.type">
+                <option value="">Selecciona</option>
+                <option value="bug">Bug</option>
+                <option value="fire">Fire</option>
+                <option value="normal">Normal</option>
+                <option value="poison">Poison</option>
+                <option value="water">Water</option>
+              </select>
+              <div class="invalid-feedback d-block" *ngIf="inputIsValid('type')">
+                El tipo es requerido
+            </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button [disabled]="this.pokemonForm.invalid" class="btn btn-primary me-2" type="submit">Actualizar</button>
+          <a routerLink="/pokemon" class="btn btn-secondary my-2">Regresar al listado</a>
+        </form>
+      </div>
+  </div>
+
+    <div class="row py-lg-5" *ngIf="pageLoaded && !pokemon">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="alert alert-warning text-center" role="alert">
+            <div>
+                No existe ningún pokémon con el id buscado.
+            </div>
+          </div>
+          <p class="text-center">
+            <a routerLink="/pokemon" class="btn btn-primary my-2">Regresar al listado</a>
+          </p>
+        </div>
+      </div>
+</div>
+
+<app-footer></app-footer>
